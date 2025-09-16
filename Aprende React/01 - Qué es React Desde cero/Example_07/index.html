@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 07 - Tu primer proyecto práctico con React</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            Con los componentes, ya puedes empezar a estructurar una UI simple. Un buen ejercicio práctico sería:
+        </p>
+        <ol>
+            <li>Crear un componente Header que muestre el título de la aplicación.</li>
+            <li>Crear un componente Footer con información de copyright.</li>
+            <li>Crear un componente ProductCard que muestre el nombre y precio de un producto.</li>
+            <li>Crear un componente ProductList que use varios ProductCard.</li>
+            <li>Ensamblar todo en el componente App.</li>
+        </ol>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        //Elemento Header
+        const myHeader = <title>Mi primera aplicación con React</title>;
+        
+        //Elemento Footer
+        const myFooter = <footer>© 2023 Mi primera aplicación con React</footer>;
+
+        //Elemento ProductCard
+        const myProductCardFragmented = React.createElement(
+            React.Fragment,
+            null,
+            React.createElement("Destornillador", "15€"),
+            React.createElement("Martillo", "15€")
+        );
+
+        //Elemento ProductList
+        const myProductList = React.createElement("ul", null, React.createElement("li", null, myProductCardFragmented));
+
+
+
+        // Obtener el contenedor DOM
+        const container = document.getElementById('root');
+
+        // Crear una raíz de React
+        const root = ReactDOM.createRoot(container);
+
+        // Renderizar el componente App dentro de la raíz
+        root.render(<App />); // Usamos JSX para renderizar nuestro componente <App />
+    </script>
+</body>
+</html>
