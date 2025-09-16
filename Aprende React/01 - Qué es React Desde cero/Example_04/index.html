@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 04 - JSX desde cero</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            SX (JavaScript XML) es una extensión de sintaxis para JavaScript que parece HTML. Es la forma preferida de escribir React porque hace que la estructura de la UI sea mucho más legible. Babel transpilará tu código JSX a llamadas React.createElement.
+
+            Reglas clave de JSX:
+            <ul>
+                <li>Similar a HTML/XML: Representa la estructura de la UI.</li>
+                <li>Requiere un único elemento raíz: Al igual que React.createElement, si renderizas múltiples hermanos, necesitas un contenedor (div, <>, etc.).</li>
+                <li>Atributos en camelCase: Atributos HTML como class se convierten en className, for en htmlFor.</li>
+                <li>Expresiones JavaScript con {}: Puedes insertar variables, expresiones o llamadas a funciones dentro de JSX usando llaves.</li>
+            </ul>
+            Ejemplos en JSX (equivalentes a los anteriores):
+        </p>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Elemento simple
+        const myElementJSX = <p>¡Hola, React (con JSX)!</p>;
+
+        // Elemento con atributos
+        const linkElementJSX = <a href="https://react.dev" target="_blank" className="my-link-jsx">Visitar la documentación (JSX)</a>;
+
+        // Fragment con sintaxis corta <> </>
+        const fragmentExampleJSX = (
+        <>
+            <p>Primer párrafo (JSX)</p>
+            <p>Segundo párrafo (JSX)</p>
+        </>
+        );
+
+        // Usando expresiones JavaScript
+        const name = 'Mundo';
+        const greetingElement = <p>¡Hola, {name}!</p>; // Inserta el valor de la variable 'name'
+
+        const sum = 5 + 3;
+        const calculationElement = <p>5 + 3 es igual a {sum}.</p>; // Inserta el resultado de la expresión
+
+        // Renderizar uno de ellos
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(fragmentExampleJSX); // O myElementJSX, linkElementJSX, etc.
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 05 - Crea tu primera aplicación con React</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            Combinando lo aprendido, aquí tienes el archivo HTML completo para tu primera “mini-aplicación” React usando CDN y JSX:
+        </p>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Definimos un componente principal (más sobre esto después)
+        // Por ahora, es una función que devuelve JSX
+        function App() {
+            const title = "¡Mi primera app!"; // Puedes usar JS dentro de tu función/componente
+            return (
+                <div>
+                    <h1>{title}</h1>
+                    <p>¡Hola desde mi aplicación React!</p>
+                    <p>Esto está renderizado con React y JSX usando CDN.</p>
+                </div>
+            );
+        }
+
+        // Obtener el contenedor DOM
+        const container = document.getElementById('root');
+
+        // Crear una raíz de React
+        const root = ReactDOM.createRoot(container);
+
+        // Renderizar el componente App dentro de la raíz
+        root.render(<App />); // Usamos JSX para renderizar nuestro componente <App />
+    </script>
+</body>
+</html>

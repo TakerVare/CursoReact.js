@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 01 - Crea tu primer elemento</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML</h3>
+     <div id="explain">
+        <p>
+            Antes de usar herramientas de build modernas como Vite o Create React App, podemos probar React directamente en un archivo HTML simple usando scripts de CDN. Necesitaremos 3 scripts: React (la librería principal), ReactDOM (para interactuar con el DOM) y Babel (para entender JSX).
+            En React, un elemento es una descripción ligera de un nodo del DOM o de un componente. Son objetos planos que le dicen a React lo que quieres renderizar.
+            Sin JSX, crearías elementos usando React.createElement():
+        </p>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Crear un elemento de párrafo
+        const myElement = React.createElement(
+            'p',        // 1. Tipo de elemento (etiqueta HTML o componente)
+            null,       // 2. Props (atributos, eventos, etc. null por ahora)
+            '¡Hola, React!' // 3. Hijos (contenido dentro del elemento)
+        );
+
+        // Encontrar el contenedor en el DOM
+        const container = document.getElementById('root');
+
+        // Crear una raíz de React (React 18+)
+        const root = ReactDOM.createRoot(container);
+
+        // Renderizar el elemento en el contenedor
+        root.render(myElement);
+    </script>
+</body>
+</html>

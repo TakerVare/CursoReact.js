@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 06 - CCrear componentes en React</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            Los componentes son el corazón de React. Son funciones (o clases) que devuelven elementos de React (JSX). Permiten dividir la UI en piezas independientes y reutilizables.
+            <br>
+            Hay dos tipos principales (históricamente): Componentes de Clase y Componentes Funcionales. En React moderno, los Componentes Funcionales con Hooks son el enfoque recomendado.
+            <br>
+            Nota: Los nombres de los componentes en React siempre deben empezar con letra mayúscula (WelcomeMessage, Greeting, App). Así React los distingue de las etiquetas HTML nativas (div, p, h1).
+        </p>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Un componente funcional simple
+        function WelcomeMessage() {
+        return (
+            <h2>¡Bienvenido a mi sitio web!</h2>
+        );
+        }
+
+        // Otro componente
+        function Greeting(props) { // Los componentes funcionales reciben 'props' como argumento
+        return (
+            <p>Hola, {props.name}!</p>
+        );
+        }
+
+        // El componente principal App usando los componentes
+        function App() {
+        return (
+            <div>
+            <h1>Mi Aplicación con Componentes</h1>
+            <WelcomeMessage /> {/* Usamos el componente como si fuera una etiqueta HTML personalizada */}
+            <Greeting name="Usuario" /> {/* Le pasamos una 'prop' llamada 'name' */}
+            <Greeting name="Invitado" /> {/* Reutilizamos el componente con otra prop */}
+            </div>
+        );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+</html>

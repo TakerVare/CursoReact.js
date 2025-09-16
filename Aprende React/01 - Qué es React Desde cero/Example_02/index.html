@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 02 - Elemento con atributos (Props)</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            El segundo argumento de React.createElement es un objeto para las props (propiedades). Aquí defines atributos HTML estándar (como href, src, className en lugar de class) o propiedades personalizadas para tus componentes.
+        </p>
+     </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Crear un elemento de párrafo
+        const linkElement = React.createElement(
+        'a',
+        {
+            href: 'https://react.dev', // Atributo href
+            target: '_blank',       // Atributo target
+            className: 'my-link'    // Atributo class (se usa className en React/JSX)
+        },
+        'Visitar la documentación de React' // Contenido del enlace
+    );
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(linkElement);
+    </script>
+</body>
+</html>
