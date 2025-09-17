@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Link al archivo CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 08 - Estilos en React</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            Hay varias formas de aplicar estilos en React:
+        </p>
+        <ol>
+            <li>CSS Clásico: Archivos .css separados. Usas className en JSX.</li>
+            <li>Estilos en Línea (Inline Styles): Objetos JavaScript que se aplican directamente al elemento usando la prop style. Las propiedades CSS se escriben en camelCase.</li>
+            <li>CSS Modules: Archivos CSS con nombres de clase generados automáticamente para evitar conflictos.</li>
+            <li>Librerías CSS-in-JS: Como Styled Components o Emotion, que permiten escribir CSS directamente en tu código JavaScript/JSX.</li>
+        </ol>
+        <p>
+            Ejemplo de Estilos en Línea y CSS Clásico (requiere configuración de build para archivos .css):
+        </p>
+        <p>
+            Los estilos en línea son útiles para estilos dinámicos o componentes pequeños, pero para estilos globales o complejos, las clases CSS o CSS Modules son preferibles.
+        </p>
+     </div>
+     
+     
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- Estilos en Línea ---
+        const myStyle = {
+            color: 'purple', // Propiedades en camelCase
+            fontSize: '20px',
+            border: '1px solid blue',
+            padding: '10px',
+            borderRadius: '5px'
+        };
+
+        function StyledParagraphInline() {
+            return (
+                <p style={myStyle}>Este párrafo tiene estilos en línea.</p>
+            );
+        }
+
+        // --- Estilos con className (requiere un archivo CSS linkeado y reglas definidas) ---
+        // Supongamos que tienes un archivo styles.css:
+        /*
+        .styled-paragraph-class {
+            color: green;
+            font-weight: bold;
+        }
+        */
+
+        function StyledParagraphClass() {
+            // En un entorno CDN, necesitarías linkear un archivo style.css en tu HTML <head>
+            return (
+                <p className="styled-paragraph-class">Este párrafo usa una clase CSS.</p>
+            );
+        }
+
+                
+        // Componente principal App
+        function App() {
+            return (
+                <div>
+                    <StyledParagraphInline />
+                    { <StyledParagraphClass />}
+                </div>
+            );
+        }
+
+        // Obtener el contenedor DOM
+        const container = document.getElementById('root');
+
+        // Crear una raíz de React
+        const root = ReactDOM.createRoot(container);
+
+        // Renderizar el componente App dentro de la raíz
+        root.render(React.createElement(App, null)); // Using React.createElement instead of JSX
+    </script>
+</body>
+</html>
