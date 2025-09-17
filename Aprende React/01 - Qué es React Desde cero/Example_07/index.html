@@ -26,27 +26,66 @@
             <li>Ensamblar todo en el componente App.</li>
         </ol>
      </div>
+     
+     
     <div id="root"></div>
 
     <script type="text/babel">
-        //Elemento Header
-        const myHeader = <title>Mi primera aplicación con React</title>;
-        
-        //Elemento Footer
-        const myFooter = <footer>© 2023 Mi primera aplicación con React</footer>;
+        // Datos de productos
+        const products = [
+            { name: "Destornillador", price: "15€" },
+            { name: "Martillo", price: "20€" },
+            { name: "Llave inglesa", price: "25€" }
+        ];
 
-        //Elemento ProductCard
-        const myProductCardFragmented = React.createElement(
-            React.Fragment,
-            null,
-            React.createElement("Destornillador", "15€"),
-            React.createElement("Martillo", "15€")
-        );
+        // Componente ProductCard
+        function ProductCard({ name, price }) {
+            return React.createElement("div", { className: "product-card" },
+                React.createElement("h3", null, name),
+                React.createElement("p", null, "Precio: ", price)
+            );
+        }
 
-        //Elemento ProductList
-        const myProductList = React.createElement("ul", null, React.createElement("li", null, myProductCardFragmented));
+        // Componente ProductList
+        function ProductList({ products }) {
+            return React.createElement("div", { className: "product-list" },
+                React.createElement("h2", null, "Nuestros Productos"),
+                React.createElement("div", { className: "products" },
+                    products.map((product, index) => 
+                        React.createElement(ProductCard, { 
+                            key: index,
+                            name: product.name, 
+                            price: product.price 
+                        })
+                    )
+                )
+            );
+        }
 
+        // Componente Header
+        function Header() {
+            return React.createElement("header", { className: "app-header" },
+                React.createElement("h1", null, "Mi Tienda de Herramientas")
+            );
+        }
 
+        // Componente Footer
+        function Footer() {
+            return React.createElement("footer", { className: "app-footer" },
+                "© " + new Date().getFullYear() + " Mi Tienda de Herramientas"
+            );
+        }
+
+        // Componente principal App
+        function App() {
+            return React.createElement("div", { className: "app" },
+                React.createElement(Header, null),
+                React.createElement("main", null,
+                    React.createElement(ProductList, { products: products })
+                ),
+                React.createElement(Footer, null)
+            );
+        }
 
         // Obtener el contenedor DOM
         const container = document.getElementById('root');
@@ -55,7 +94,7 @@
         const root = ReactDOM.createRoot(container);
 
         // Renderizar el componente App dentro de la raíz
-        root.render(<App />); // Usamos JSX para renderizar nuestro componente <App />
+        root.render(React.createElement(App, null)); // Using React.createElement instead of JSX
     </script>
 </body>
 </html>
