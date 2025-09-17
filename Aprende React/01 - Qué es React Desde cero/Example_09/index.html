@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primer React (CDN)</title>
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Link al archivo CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <!-- El contenedor donde React renderizará nuestra app -->
+     <h1>Primer React</h1>
+     <h2>Example 09 - Reutilización de componentes: Props</h2>
+     <h3>En este ejemplo ejecutamos el script de REACT directamente en el HTML añadiendo un enlace</h3>
+     <div id="explain">
+        <p>
+            Las Props (Propiedades) son la forma principal de pasar datos de un componente padre a un componente hijo. Son como los atributos que pasas a las etiquetas HTML.
+        </p>
+        <p>
+            Destructuración de Props: Es común desestructurar el objeto props directamente en la firma de la función para mayor comodidad:
+        </p>
+     </div>
+     
+     
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /*
+        VERSIÓN ESTRUCTURADA
+        
+        // Componente que espera props
+        
+        function UserGreeting(props) {
+        // Puedes acceder a las props a través del objeto 'props'
+        return (
+            <h2>Hola, {props.username}! ¡Qué gusto verte!</h2>
+        );
+        }
+
+        // Componente padre que usa UserGreeting y le pasa diferentes props
+        function App() {
+            const loggedInUser = "Alicia";
+            const guestUser = "Invitado";
+
+            return (
+                <div>
+                    <UserGreeting username={loggedInUser} /> {}
+                    <UserGreeting username={guestUser} />   {}
+                    <UserGreeting username="Bob" />       {}
+                </div>
+                // Pasando la variable loggedInUser como prop 'username' 
+                // Pasando la variable guestUser como prop 'username' 
+                // Pasando un string literal como prop 
+            );
+        }
+        */
+
+
+        // Versión con Destructuración
+        function UserGreeting({ username }) { // Accede directamente a 'username'
+        return (
+            <h2>Hola, {username}! ¡Qué gusto verte!</h2>
+        );
+        }
+
+        // El uso en el padre es el mismo
+        function App() {
+        const loggedInUser = "Alicia";
+        return (
+            <div>
+            <UserGreeting username={loggedInUser} />
+            </div>
+        );
+        }
+        
+        
+
+        // Obtener el contenedor DOM
+        const container = document.getElementById('root');
+
+        // Crear una raíz de React
+        const root = ReactDOM.createRoot(container);
+
+        // Renderizar el componente App dentro de la raíz
+        root.render(React.createElement(App, null)); // Using React.createElement instead of JSX
+    </script>
+</body>
+</html>
